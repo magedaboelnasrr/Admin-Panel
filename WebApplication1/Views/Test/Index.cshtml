@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+@inject WebApplication1.BL.Interface.IDepartmentRep department
+@inject WebApplication1.BL.Interface.IEmployeeRep emp
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+</head>
+<body>
+
+    @*<ul>
+            @foreach (var item in department.Get())
+            {
+                <li>@item.DepartmentName</li>
+            }
+        </ul>
+        <br />
+        <br />
+        <ul>
+            @foreach (var item in emp.Get())
+            {
+                <li>@item.Name</li>
+            }
+        </ul>*@
+    Name <input type="text" id="text1" />
+    <input type="button" id="btn" value="Click" />
+    <div id="mydiv"></div>
+
+
+
+
+
+    <script src="~/plugins/jquery/jquery.js"></script>
+    <script>
+
+        $(function () {
+
+            $("#btn").click(function () {
+
+                var Name = $("#txt1").val();
+
+                $.ajax({
+                    type:"POST",
+                    url:"/test/Display",
+                    data: { name: Name},
+                    success: function (res) {
+
+                        $("#mydiv").text(res);
+                    }
+
+                });
+
+            });
+
+
+        });
+
+
+    </script>
+
+</body>
+</html>

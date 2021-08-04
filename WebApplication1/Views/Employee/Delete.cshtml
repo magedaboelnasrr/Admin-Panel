@@ -1,0 +1,52 @@
+﻿@model WebApplication1.Models.EmployeeVM
+
+@{
+    ViewBag.Title = "Delete Employee";
+}
+
+<link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+<h2>Delete Employee</h2>
+
+
+<form asp-controller="Employee" asp-action="Delete" method="post" class="form-group">
+    <label asp-for="Name">Employee Name</label>
+    <input type="text" asp-for="Name" disabled class="form-control" />
+    
+    <br />
+    <label asp-for="Email">Employee Email</label>
+    <input type="email" asp-for="Email" disabled class="form-control" />
+ 
+    <br />
+    <label asp-for="Salary">Employee Salary</label>
+    <input type="text" asp-for="Salary" disabled class="form-control" />
+   
+    <br />
+    <label asp-for="Address">Employee Address</label>
+    <input type="text" asp-for="Address" disabled class="form-control" />
+  
+    <br />
+    <label asp-for="HireDate">Hire Date</label>
+    <input type="text" asp-for="HireDate" disabled class="form-control" />
+   
+    <br />
+    <div class="custom-control custom-checkbox">
+        <input asp-for="IsActive" type="checkbox" disabled class="custom-control-input">
+        <label class="custom-control-label" asp-for="IsActive">Activate</label>
+    </div>
+    
+    <label asp-for="Notes"> Notes</label>
+    <textarea asp-for="Notes" disabled class="form-control" rows="4"></textarea>
+   
+    <br />
+    <label asp-for="DepartmentId">Department</label>
+    <select disabled asp-for="DepartmentId" asp-items="@(SelectList)ViewBag.DeparmentList">
+        <option>Choose Department</option>
+    </select>
+   
+    <br />
+    <center>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        
+    </center>
+</form>

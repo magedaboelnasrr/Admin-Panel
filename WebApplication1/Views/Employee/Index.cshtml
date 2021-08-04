@@ -1,0 +1,139 @@
+﻿@model IQueryable<WebApplication1.Models.EmployeeVM>
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+
+<!-- Bootstrap Core Css -->
+<!--<link href="~/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+<link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />-->
+
+<h2>Welcome To Employee</h2>
+
+
+<center>
+    <h1><a asp-controller="Employee" asp-action="create" class="btn btn-info">Create New</a></h1>
+</center>
+<br />
+
+
+@*<div>
+        <table class="table table-bordered table-hover table-striped">
+            <tr style="text-align:center"><th>ID</th><th>Name</th><th>Code</th></tr>
+            @foreach (var item in Model)
+            {
+                <tr><td>@item.Id</td><td>@item.DepartmentName</td><td>@item.DepartmentCode</td></tr>
+            }
+        </table>
+
+
+    </div>*@
+
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Welcome To Employee</h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center table-striped table-hover js-basic-example dataTable">
+
+                            <thead>
+                                <tr class="text-danger">
+                                    @*<th>ID</th>*@
+                                    <th>Name</th>
+                                    @*<th>Email</th>*@
+                                    <th>Salary</th>
+                                    @*<th>Address</th>*@
+                                    @*<th>HireDate</th>*@
+                                    @*<th>IsActive</th>*@
+                                    @*<th>Notes</th>*@
+                                    <th>Department</th>
+                                    <th>Photo</th>
+                                    <th>CV</th>
+
+                                    <th>District</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    @*<td>@item.Id</td>*@
+                                    <td>@item.Name</td>
+                                    @*<td>@item.Email</td>*@
+                                    <td>@item.Salary</td>
+                                    @*<td>@item.Address</td>*@
+                                    @*<td>@item.HireDate.Date.ToShortDateString()</td>*@
+                                    @*<td>@item.IsActive</td>*@
+                                    @*<td>@item.Notes</td>*@
+                                    <td>@item.DepartmentId</td>
+                                    <td><img src="~/Files/Photos/@item.PhotoName" width="30" height="30" /></td>
+                                    <td><a href="~/Files/Docs/@item.CvName">Download CV</a></td>
+
+                                    <td>@item.DistrictId</td>
+
+
+
+                                    <td><a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a></td>
+                                    <td><a asp-controller="Employee" asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                                    @*<td><a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a></td>*@
+
+                                </tr>
+                                }
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="~/plugins/jquery/jquery.min.js"></script>
+<script src="~/plugins/jquery-datatable/jquery.dataTables.js"></script>
+<script src="~/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>*@
+
+
+
+@section DataTableSection{
+
+    <script>
+
+        $(function () {
+            $('.js-basic-example').DataTable({
+                responsive: true,
+                paging: true,
+                pageLength: 3,
+                bSort: true,
+                bFilter: true,
+                //blengthchange: false,
+                //binfo: false,
+                lengthMenu: [[3, 5, 10, 25, 50, -1], [3, 5, 10, 25, 50, "All"]],
+
+            });
+        });
+    </script>
+
+}
